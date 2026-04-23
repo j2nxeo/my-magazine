@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나만의 매거진</title>
+
+<style>
+:root {
+    --bg-color: #f4f4f0;
+    --text-color: #222;
+    --point-color: #e11d48;
+    --border-color: #333;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Pretendard', 'Georgia', serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+}
+
+
+.magazine-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 4px solid var(--border-color);
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+}
+
+header {
+    grid-column: 1 / -1;
+    text-align: center;
+    border-bottom: 4px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+aside { padding: 10px; }
+
+main {
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    padding: 0 20px;
+}
+
+
+.article-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.magic-card {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    overflow: hidden;
+
+    transition: transform 0.3s;
+}
+
+.magic-card:hover {
+    transform: translateY(-5px);
+}
+
+.magic-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* ticker */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: var(--border-color);
+    color: #fff;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.ticker-move {
+    display: inline-block;
+    white-space: nowrap;
+    animation: slide-left 10s linear infinite;
+}
+
+@keyframes slide-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+
+.badge-new {
+    display: inline-block;
+    background: var(--point-color);
+    color: white;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    margin-bottom: 10px;
+
+    animation: float 1s infinite alternate;
+}
+
+@keyframes float {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-5px); }
+}
+
+/* 모바일 */
+@media (max-width: 800px) {
+    .magazine-layout { grid-template-columns: 1fr; }
+    header { grid-column: 1; }
+    main { border: none; padding: 0; margin: 20px 0; }
+    .article-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="magazine-layout">
+
+<header>
+    <h1>🎬 내 인생 영화</h1>
+    <p>21년 살면서 재밌게 본 영화</p>
+</header>
+
+<div class="ticker-wrap" style="grid-column: 1 / -1;">
+    <div class="ticker-move">
+        🔥 릴리슈슈의 모든것 · 바스켓볼 다이어리 · 복수는 나의 것 🔥
+    </div>
+</div>
+
+<aside>
+    <h2 style="border-bottom: 2px solid var(--point-color); margin-bottom: 15px;">Profile</h2>
+    <div style="background: #fff; padding: 15px; border: 1px solid #ddd;">
+        <h4>편집장의 말</h4>
+        <p style="font-size: 0.9rem; color: #666;">
+            제 기준 정말 감명깊게 본 영화들을 소개합니다.
+        </p>
+    </div>
+</aside>
+
+<main>
+    <div class="article-grid">
+
+        <article class="magic-card">
+            <span class="badge-new">NEW</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm3XrQ0Mucq2EKKlFkYAAjCCmz3OLdhA8ngHdwM3sAWoSQkIz6cUj3ZD7KOA2FbG0BYcYuFn6b0QK7GWhiwatuGQ0hBbzv9E7dR4qUS148Ew&s=10">
+            <h3>릴리슈슈의 모든것</h3>
+            <p>괴롭힘 당하던 소년이 릴리슈슈라는 가수에 빠지는 이야기. 비참하지만 재미있다.</p>
+        </article>
+
+        <article class="magic-card">
+            <span class="badge-new" style="background:#3b82f6;">HOT</span>
+            <img src="https://www.daeyoungpanda.com/shopimages/dypanda/007003006222.jpg?1292424783">
+            <h3>바스켓볼 다이어리</h3>
+            <p>농구를 좋아하지만 타락하는 소년들의 이야기.</p>
+        </article>
+
+        <article class="magic-card">
+            <img src="https://upload.wikimedia.org/wikipedia/ko/f/f5/Sympathy_For_Mr._Vengeance.jpg">
+            <h3>복수는 나의 것</h3>
+            <p>딸을 잃은 아버지의 복수극. 슬프고 생각할 거리 많은 영화.</p>
+        </article>
+
+    </div>
+</main>
+
+<aside>
+    <h2 style="border-bottom: 2px solid var(--point-color); margin-bottom: 15px;">Ad</h2>
+
+    <div style="
+        background: #333;
+        color: #fff;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+    ">
+        <img src="https://dimg.donga.com/wps/NEWS/IMAGE/2020/08/06/102330895.3.jpg"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 8px;">
+
+        <img src="https://image.8dogam.com/resized/product/asset/v1/upload/47639d936053443f9ce276adbbccf8c1.jpg?type=big&res=2x&ext=webp"
+             style="width: 90px; height: 90px; object-fit: cover; border-radius: 8px;">
+
+        <p style="font-size: 12px; text-align: center;">
+            김 + 가래떡 = 김래떡<br>
+            4년째 먹는 최애 간식
+        </p>
+    </div>
+
+</aside>
+
+</div>
+
+</body>
+</html>
